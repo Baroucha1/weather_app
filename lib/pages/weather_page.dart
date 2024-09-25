@@ -12,7 +12,7 @@ class WeatherPage extends StatefulWidget {
 
 class _WeatherPageState extends State<WeatherPage> {
   // api key
-  final _weatherService = WeatherService(apiKey);
+  final _weatherService = WeatherService('25f9c8efd7a9daf68411ebb6886c6762');
   Weather? _weather;
 
   // fetch weather
@@ -46,14 +46,19 @@ class _WeatherPageState extends State<WeatherPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Column(
-        children: [
-          // city name
-          Text(_weather?.cityName ?? "loading city.."),
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            // city name
+            Text(_weather?.cityName ?? "loading city.."),
 
-          //temperature
-          Text('${_weather?.temperature.round()}*c')
-        ],
+            //temperature
+            Text('${_weather?.temperature.round() ?? 0}°C'), // No need for double.parse
+
+
+          ],
+        ),
       )
 
     );
